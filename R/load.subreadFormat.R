@@ -26,7 +26,7 @@ load.subreadFormat<- function(file_list, annotations=NA, annot_id=1){
       tmp <- read.delim(file = file_list[n], header=TRUE, skip=1, row.names=1)
 
       if(all(row.names(raw)==row.names(tmp))){
-        tmp2 <- cbind(raw,tmp[,-(1:5)])         # Note that this assumes the first 5 columns are identical is all files.  It also assumes these are the annotation columns, so only keeps the columns from the first file.
+        tmp2 <- cbind(raw,tmp[,-(1:5)])         # Note that this assumes the first 5 columns are identical in all files.  It also assumes these are the annotation columns, so only keeps the columns from the first file.
         raw <- tmp2
       }
     }

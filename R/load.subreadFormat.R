@@ -11,7 +11,7 @@
 #' @keywords gene, expression, import
 #' @return A matrix of raw read counts.
 #' @examples
-#' data <- load.subreadFormat(file_list = c("file1","file2","file3"))
+#' data <- load.subreadFormat(file_list = c("file1","file2","file3"), annotations="file", annot_id=2)
 #' @export load.subreadFormat
 #' @author Amy L. Olex \email{alolex@vcu.edu}
 #'
@@ -38,6 +38,10 @@ load.subreadFormat<- function(file_list, annotations=NA, annot_id=1){
     tmp3 <- merge(geneSym, raw, by="row.names", all.x=FALSE, all.y=TRUE)
     row.names(tmp3) <- tmp3$Row.names
     data <- tmp3[,-1]
+    return(data)
+  }
+  else {
+    return(raw)
   }
 
 

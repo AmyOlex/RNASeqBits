@@ -12,5 +12,5 @@
 #'
 
 convert.to.colors <- function(annot.df){
-  return( lapply(lapply(annot, function(x){levels(as.factor(x))}), function(x){if(length(x)<=6){seq(from=1, to=length(x))}else{rainbow(length(x))} }) )
+  return( lapply(lapply(annot.df, function(x){levels(as.factor(x))}), function(x){if(length(x)<=6){seq(from=1, to=length(x))}else{rainbow(length(x))} }) )
 }

@@ -8,13 +8,13 @@
 #' @keywords deeptools, import, heatmap
 #' @return A data frame of bin counts from the multiBamSummary output, and a data frame with annotations.
 #' @examples
-#' data <- deep.heatmap(deep_file="counts.tab", annot_file="annots.txt")
+#' data <- deep.heatmap(deep_file="counts.tab", annot_file="annots.txt", image_name="Plot Title")
 #' @export deep.heatmap
 #' @import NMF
 #' @author Amy L. Olex \email{alolex@vcu.edu}
 #'
 
-deep.heatmap <- function(deep_file, annot_file, image_name){
+deep.heatmap <- function(deep_file, annot_file, outfile_name = "image.jpg", plot_title = ""){
 
   ## Load in the raw counts from multiBamSummary
   data <- read.delim(file = deep_file, header=TRUE, quote="\"'")
@@ -32,9 +32,9 @@ deep.heatmap <- function(deep_file, annot_file, image_name){
 
   my_colors <- convert.to.colors(annot)
 
-  jpeg(filename=image_name, width=2500, height=2500, res=150, pointsize=5)
+  jpeg(filename=outfile_name, width=2500, height=2500, res=150, pointsize=5)
 
-  aheatmap(deep_cor, distfun="euclidean", hclustfun="average", main=paste("UCEC-BRCA DeepTools Correlation Heatmap", sep=""), scale="none", annCol=annot, annRow=annot, annColors=my_colors,
+  aheatmap(deep_cor, distfun="euclidean", hclustfun="average", main=plot_title, scale="none", annCol=annot, annRow=annot, annColors=my_colors,
            fontsize=10, cexRow=2, treeheight=200)
 
   dev.off()

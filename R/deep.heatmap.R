@@ -19,9 +19,9 @@ deep.heatmap <- function(deep_file, annot_file, outfile_name = "image.jpg", plot
   ## Load in the raw counts from multiBamSummary
   data <- read.delim(file = deep_file, header=TRUE, quote="\"'")
   # remove first 3 columns from data matrix
-  data <- data[,4:ncol(data)]
+  data <- data[,4:ncol(data), drop=FALSE]
 
-  annot <- read.delim(file = annot_file, header=TRUE, row.names = 1, quote="\"'")
+  annot <- read.delim(file = annot_file, header=TRUE, row.names = 1, quote="\"'", colClasses="factor")
   # Make names out of the row.names
   row.names(annot) <- make.names(row.names(annot))
 

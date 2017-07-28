@@ -4,7 +4,8 @@
 \alias{deep.heatmap}
 \title{Creates an annotated heatmap from DeepTools multiBamSummary tab delimited output.}
 \usage{
-deep.heatmap(deep_file, annot_file, image_name)
+deep.heatmap(deep_file, annot_file, outfile_name = "image.jpg",
+  plot_title = "")
 }
 \arguments{
 \item{deep_file}{The path and name of the file containing the DeepTools tab delimited results from the multiBamSummary method.}
@@ -19,7 +20,7 @@ This function dreated a heatmap from the DeepTools multiBamSummary method, and a
 The file is formatted with the following fields: #'chr'	'start'	'end'	'sample1_name.bam' 'sample2_name.bam' ... 'sampleN_name.bam'
 }
 \examples{
-data <- deep.heatmap(deep_file="counts.tab", annot_file="annots.txt")
+data <- deep.heatmap(deep_file="counts.tab", annot_file="annots.txt", image_name="Plot Title")
 }
 \author{
 Amy L. Olex \email{alolex@vcu.edu}

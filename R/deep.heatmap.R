@@ -39,5 +39,5 @@ deep.heatmap <- function(deep_file, annot_file, outfile_name = "image.jpg", plot
 
   dev.off()
 
-  return(list(data, annot))
+  return(list(mtx=data2, annot=annot))
 }

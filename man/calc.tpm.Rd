@@ -4,12 +4,10 @@
 \alias{calc.tpm}
 \title{Calculates the TPM values for RNA-seq data.}
 \usage{
-calc.tpm(data, feature_length)
+calc.tpm(data)
 }
 \arguments{
-\item{data}{A matrix of read count data with genes as rows and samples as columns.}
-
-\item{feature_length}{A data frame with the gene lengths for each feature/gene in the read count matrix. The feature length column must be labeled as "Length".}
+\item{data}{A matrix of read count and gene length data with genes as rows and samples as columns.  The very first column of the matrix MUST be the gene lengths, and MUST be named "Lengths".}
 }
 \value{
 A matrix of TPM expression values.

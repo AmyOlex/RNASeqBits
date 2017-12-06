@@ -28,14 +28,14 @@ analyze.contrast <- function(dds, control_cond, experiment_cond, gene_features, 
   degs <- as.data.frame(res)
   degs <- merge(gene_features, degs, by="row.names", all.x=FALSE, all.y=TRUE)
 
-  write.table(degs, file=paste("Data_",species,"_DESeq2_",celltype,"_DEGs_",contrast_name,"_",date,".txt", sep=""), quote=FALSE, sep="\t", row.names=TRUE, col.names=TRUE)
+  write.table(degs, file=paste("Data_",species,"_DESeq2_",celltype,"_DEGs_",contrast_name,"_",date,".txt", sep=""), quote=FALSE, sep="\t", row.names=FALSE, col.names=TRUE)
 
   ## Sig Gene Plots
   top_gene_mnH <- degs[order(degs$padj),][1,]
 
-  jpeg(filename=paste("GenePlot",celltype,species,contrast_name,top_gene_mnH$Gene.Symbol[1],date,".jpg",sep="_"), width=800, height=600, units="px", res=100)
+  jpeg(filename=paste("GenePlot",celltype,species,contrast_name,top_gene_mnH[1,2],date,".jpg",sep="_"), width=800, height=600, units="px", res=100)
   plotCounts(dds, gene=top_gene_mnH$Row.names[1], intgroup="condition",
-             main=paste(celltype," ", contrast_name, "\nMost Significant DE ", species, " Gene: ",top_gene_mnH$Gene.Symbol[1],
+             main=paste(celltype," ", contrast_name, "\nMost Significant DE ", species, " Gene: ",top_gene_mnH[1,2],
                         "\n Log2 FC = ",round(top_gene_mnH$log2FoldChange[1], digits=2), " padj = ", format(top_gene_mnH$padj[1], digits=2), sep=""))
   dev.off()
 }

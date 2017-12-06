@@ -3,6 +3,7 @@
 export(analyze.contrast)
 export(calc.percentSpeciesExpression)
 export(calc.tpm)
+export(center.palette)
 export(convert.to.colors)
 export(deep.heatmap)
 export(filter.removeZeroSumRows)

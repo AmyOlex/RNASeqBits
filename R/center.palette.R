@@ -25,5 +25,9 @@ center.palette <- function(data, palette_length = 100, color1 = "blue", color2 =
 
   color1=colorRampPalette(colors=c(color1, "white"))(length1)
   color2=colorRampPalette(colors=c("white", color2))(length2)
-  return(c(color1, color2))
+  my_colors <- c(color1, color2)
+
+  my_breaks <- seq(from = range(data)[1], to = range(data)[2], length.out = length(my_colors)+1)
+
+  return(list(colors = my_colors, breaks = my_breaks))
 }
